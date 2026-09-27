@@ -1,0 +1,11 @@
+{
+  "python": "3.13.13",
+  "seed": 42,
+  "platform_score_reported_by_user": 0.8075,
+  "submission_sha256": "45c6660d9e40560903bdf7bd0d649c1e294a2c9ab80cfc86401ce34874ac8a61",
+  "inputs_sha256": {
+    "train.csv": "b659a0e9e3df8146a1c10ca33cace9ece3da016e0ce3a502cbabf6554b88c55f",
+    "test.csv": "1a0342a55a30ff5bb0ee14428b91d2e18c759f55bf1ed35554b80f423f35f4b7",
+    "events.csv.gz": "fa6923a91846aed3f8212cde039732fcf8d818b1f9f44a57878bb133de185901"
+  }
+}

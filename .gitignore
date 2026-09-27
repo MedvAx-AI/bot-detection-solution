@@ -1,0 +1,10 @@
+data/*
+!data/README.md
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+catboost_info/
+/submission.csv
+/validation.csv
+work/
