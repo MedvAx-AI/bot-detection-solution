@@ -1,0 +1,4 @@
+period,model,weight,precision_at_recall,average_precision
+early,specialists,0.15,0.6965174129353234,0.754860300877896
+middle,specialists,0.15,0.7740112994350282,0.8037414200363522
+late,specialists,0.15,0.7972027972027972,0.7911910666055659

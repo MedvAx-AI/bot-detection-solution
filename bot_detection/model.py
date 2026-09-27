@@ -7,6 +7,25 @@ from sklearn.metrics import average_precision_score
 from .features import build_features, pointer_features, device_features
 from .metric import precision_at_recall
 
+
+def specialist_predict(frame, y, train_index, predict_index):
+    """Fit independent web/mobile models; the platform is an observed feature."""
+    is_mobile = frame.mode_platform_norm.ne("web").to_numpy()
+    categorical = frame.select_dtypes("category").columns.tolist()
+    prediction = np.empty(len(predict_index))
+    for mobile_group in [False, True]:
+        group_train = train_index[is_mobile[train_index] == mobile_group]
+        group_predict = is_mobile[predict_index] == mobile_group
+        model = CatBoostClassifier(
+            iterations=500, depth=5, learning_rate=.045, l2_leaf_reg=8,
+            loss_function="Logloss", random_seed=42, verbose=False,
+            thread_count=6, allow_writing_files=False,
+        )
+        model.fit(frame.iloc[group_train], y[group_train], cat_features=categorical)
+        prediction[group_predict] = model.predict_proba(frame.iloc[predict_index[group_predict]])[:, 1]
+        print("Trained specialist:", "mobile" if mobile_group else "web", flush=True)
+    return prediction
+
 # name, number of trees used at inference, ensemble weight, CPU threads
 CONFIG = [
     ("base", 700, 0.125, 8),

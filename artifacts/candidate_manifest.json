@@ -1,0 +1,8 @@
+{
+  "submission_sha256": "1a42255b03bde85e23ddefea396842bc7a5ca5a51b1b37fd1aa7d8edb53017ec",
+  "general_ensemble_weight": 0.85,
+  "specialist_weight": 0.15,
+  "hidden_test_score": null,
+  "python": "3.13.13",
+  "random_seed": 42
+}
